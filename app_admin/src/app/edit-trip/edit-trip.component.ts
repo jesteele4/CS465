@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trip';
+import { TripDataService } from '../services/trip-data.service';
 
 @Component({
   selector: 'app-edit-trip',
@@ -73,9 +73,8 @@ export class EditTripComponent implements OnInit {
     });
   }
 
-  private formatDate(date: string): string {
-    const d = new Date(date);
-    return d.toISOString().substring(0, 10);
+  private formatDate(date: Date): string {
+    return date.toISOString().substring(0, 10);
   }
 
   public onSubmit(): void {
